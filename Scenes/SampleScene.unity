@@ -663,8 +663,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 38f3f9a876ec1fe4080635b8055453d6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: '::'
-  language: 6
+  language: 10
   defaultLanguage: 10
+  filename: mutiLangs.csv
+  mode: 0
 --- !u!4 &1799295672
 Transform:
   m_ObjectHideFlags: 0

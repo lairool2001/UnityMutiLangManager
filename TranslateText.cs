@@ -11,35 +11,39 @@ public class TranslateText : TranslateRefresh
 
     public StringToString[] setWordz;
 
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
-    {
-        refresh();
-    }
+    private string origin;
 
     [ContextMenu("Refresh")]
     public override void refresh()
     {
-        var lang = Array.Find(langWordz, item => item.language == language);
-        if (lang == null)
+        if (origin == null)
         {
-            lang = Array.Find(langWordz, item => item.language == MutiLangManager.instance.defaultLanguage);
+            origin = text.text;
         }
 
-        if (setWordz.Length == 0)
+        string aText = origin;
+        switch (MutiLangManager.instance.mode)
         {
-            text.text = lang.data;
-        }
-        else
-        {
-            string text = lang.data;
-            for (int i = 0; i < setWordz.Length; i++)
-            {
-                text = text.Replace(setWordz[i].key, setWordz[i].value);
-            }
+            case MutiLangManager.Mode.csv:
+                aText = MutiLangManager.instance.get(language, aText);
+                break;
+            case MutiLangManager.Mode.inspector:
+                var lang = Array.Find(langWordz, item => item.language == language);
+                if (lang == null)
+                {
+                    lang = Array.Find(langWordz, item => item.language == MutiLangManager.instance.defaultLanguage);
+                }
 
-            this.text.text = text;
+                aText = lang.data;
+                break;
         }
+
+        for (int i = 0; i < setWordz.Length; i++)
+        {
+            aText = aText.Replace(setWordz[i].key, setWordz[i].value);
+        }
+
+        text.text = aText;
     }
 }
 
@@ -65,12 +69,6 @@ public class StringToString
 {
     public string key;
     public string value;
-}
-
-public interface ITranslateRefresh
-{
-    public void refresh();
-    public SystemLanguage getLanguage();
 }
 
 public class TranslateRefresh : MonoBehaviour

@@ -6,4 +6,4 @@ Assets/MutiLangManager/Scenes/SampleScene.unity
 3. Put TranslateText to textMeshProUI or textMeshPro
 4. Remember set image or text component to field (Inspector)
 
-<iframe src="https://youtu.be/ojbS8mMAaZc">https://youtu.be/ojbS8mMAaZc</iframe>
+https://youtu.be/ojbS8mMAaZc

@@ -1,9 +1,5 @@
-using System;
 using System.Data;
-using System.Linq;
 using CSVFile;
-using TMPro;
-using Unity.VisualScripting;
 using UnityEngine;
 
 public class MutiLangManager : MonoBehaviour
